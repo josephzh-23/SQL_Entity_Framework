@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SQL_Entity_Framework.Models.Products>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search Product By ID</h2>
+<form action="/" method="post" role="form">
+    <div class="form-group">
+        <label for="productid">ProductId</label>
+        <input type="text" name="productid" value="" class="form-control" />
+        <input type="submit" name="btn_search" value="Search Item" class="btn btn-primary" />
+    </div>
+</form>
+
+<hr />
+<!-- Following    code will execute after click of search button and item found as per productid -->
+@{
+
+    if (Model != null)
+    {
+        <table class="table table-striped" width="500px" border="1">
+            <tr>
+                <th>ProductId</th>
+                <th>ProductName</th>
+                <th>SRNumber</th>
+                <th>Company</th>
+            </tr>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.ProductId</td>
+                    <td>@p.ProductName</td>
+                    <td>@p.SerialNumber</td>
+                    <td>@p.Company</td>
+
+                </tr>
+            }
+
+        </table>
+    }
+}
